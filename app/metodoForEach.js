@@ -1,13 +1,17 @@
 const elementoParaInserirLivros = document.getElementById("livros");
+const elementoComValorTotalDeLivrosDisponiveis = document.getElementById(
+  "valor_total_livros_disponiveis"
+);
 
 function exibirOsLivrosNaTela(listaDeLivros) {
-  // evitar a repetição de livros
   elementoParaInserirLivros.innerHTML = "";
-
   listaDeLivros.forEach((livro) => {
+    let disponibilidade =
+      livro.quantidade > 0 ? "livro__imagens" : "livro__imagens indisponivel";
+
     elementoParaInserirLivros.innerHTML += `
         <div class="livro">
-        <img class="livro__imagens" src="${livro.imagem}"
+        <img class="${disponibilidade}" src="${livro.imagem}"
           alt="${livro.alt}" />
         <h2 class="livro__titulo">
           ${livro.titulo}
